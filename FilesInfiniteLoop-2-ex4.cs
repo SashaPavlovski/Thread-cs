@@ -13,7 +13,7 @@ namespace Thread_CS
         private string _FileName;
         public string WriteToFile { get; set; }
         public int timeSleep { get; set; }
-        public object objectNew = new object();
+
         public string FileName
         {
             get { return _FileName; }
@@ -26,15 +26,10 @@ namespace Thread_CS
             FileName = fileName;
             timeSleep = time;
             Task.Run(FileExists);
-
-
         }
 
         public void FileExists()
         {
-
-            lock (objectNew)
-            {
                 if (!(File.Exists(FileName)))
                 {
                     using (FileStream file = new FileStream(FileName, FileMode.Create)) ;
@@ -44,20 +39,14 @@ namespace Thread_CS
                 {
 
                     Random random = new Random(DateTime.Now.Millisecond);
-                    for (int i = 0; i < 10000; i++)
+                    for (int i = 0; i < 5; i++)
                     {
 
                         int randomNum = random.Next(10000);
 
                         sw.WriteLine(randomNum);
                     }
-
-
-
                 }
-
-            }
-
             Thread.Sleep(timeSleep);
         }
 

@@ -27,7 +27,7 @@ namespace Thread_CS
 
             while (System.IO.File.Exists(LogFileName))
             {
-                LogFileName = $@"C:\Users\User\source\repos\FileString\mylog{CountNumberFile}.txt";
+                LogFileName = $@"mylog{CountNumberFile}.txt";
 
                 CountNumberFile++;
             }
@@ -42,7 +42,7 @@ namespace Thread_CS
             else
             {
                 var fi1 = new FileInfo(LogFileName);
-                if (fi1.Length >= 5000)
+                if (fi1.Length >= 1048576)
                 {
                     CreateFile();
                 }

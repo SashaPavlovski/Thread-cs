@@ -34,7 +34,7 @@ namespace Thread_CS
         {
             if (!(File.Exists(FileName)))
             {
-                using (FileStream file = new FileStream(FileName, FileMode.Create)) ;
+                using (FileStream file = new FileStream(FileName, FileMode.Create));
             }
             using (StreamWriter sw = new StreamWriter(FileName, true))
             {
